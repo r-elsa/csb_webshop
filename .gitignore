@@ -1,2 +1,3 @@
 webshop/__pycache__/*
-store/__pycache__/*
+store/__pycache__/*db.sqlite3
+__pycache__/
