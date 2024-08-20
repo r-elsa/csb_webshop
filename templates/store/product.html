@@ -1,0 +1,90 @@
+<!-- single product detail page -->
+
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}
+{{ product.name }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <main class="pt-5">
+      
+        <div class="row g-3">
+          
+            <div class="col-md-5 col-lg-5 order-md-first ">
+
+               <!--  button back to mainpage -->
+                <!-- <div class="col-6 text-end"> <a type ="button" href="/" id ="back_button"  style = "position:absolute;left:2; top:10" class="btn btn-secondary btn-lg"> &laquo;Back</a></div> -->
+ 
+           <!--  details of product -->
+            </div>
+            <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
+                <h1 class="mb-0 h4">{{ product.name }}</h1>
+                <p><span class="lead">{{ product.code }}</span></p>
+                <p> {{ product.information|slice:":355" }}...</p>
+                <div class="border">
+                    <div class="col border-bottom">
+                        <div class="row p-3">
+                           
+                            <div class="col-6 text-end"><span class="h4 fw-bold">{{ product.price }}€ </span></div>
+                        </div>
+                    </div>
+
+                   <!--  feature to add a chosen amount of products to basket -->
+                    <div class="col">
+                        <div class="row p-3">
+                            <div class="col-6">
+                                <label for="select">Quantity</label>
+                                <select id="select_qty" class="form-select form-select-mg mb-1">
+                                    <option selected value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                </select>
+
+                            </div>
+                            <div class="col-6 text-end"><button type ="button" id ="add-button" value = "{{product.id}}" class="btn btn-secondary btn-mg">Add to basket</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+
+
+            <script> 
+              /*   Ajax call to add products to session */
+    
+                    $(document).on('click', '#add-button', function (e) {
+                        e.preventDefault();
+                        $.ajax({
+                            type: 'POST',
+                            url: '{% url "basket:basket_add" %}',  
+                        data:{
+                            productid: $('#add-button').val(),
+                            quantity :$('#select_qty option:selected').val(),
+                            csrfmiddlewaretoken: "{{csrf_token}}",
+                            action: 'post',
+                            
+                        },
+                        dataType: 'json',
+                       
+                    success: function(res){
+                       /* accessing div with id 'basket_quantity' in base.html and rendering new quantity. form of  e.g. {qty: 14} */
+
+                        $("#basket_quantity").html(res.qty);
+                                           
+
+                    } ,
+                error: function(xhr,errmsg,err)  {
+                    print(errmsg)
+                }                     })
+                    })
+            </script>
+{% endblock %}
