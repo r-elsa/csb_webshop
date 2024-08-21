@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -11,6 +12,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'categories'
         ordering = ('name',)
+
 
         def __str__(self):
             return self.name
@@ -40,5 +42,10 @@ class Product(models.Model):
         verbose_name_plural = 'products'
         ordering = ('-created',) # descending order
 
-        def __str__(self):
-            return self.title
+    def get_absolute_url(self):
+        return reverse('store:product_detail', args=[self.slug])
+
+    def __str__(self):
+        return self.title
+        
+       
