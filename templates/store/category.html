@@ -30,24 +30,11 @@
 
   <main>
 
-    <section class="py-5 text-center container">
-      <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">Album example</h1>
-          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-          </p>
-        </div>
-      </div>
-    </section>
-  
     <div class="album py-5 bg-light">
       <div class="container">
         {% if products %}
 
-        <div class="pb-3 h5">All products</div>
+        <div class="pb-3 h5">{{ category.name|title }}</div>
         {% endif %}
       
   
@@ -58,17 +45,17 @@
               <img class="img-fluid" alt="Image" src="{{ product.image.url}}">
             
           
+  
               <div class="card-body">
                 <h5 class="card-title">{{ product.title}} </h5>
                 <p class="card-text">{{ product.description }}
                   <a class="text-dark text-decoration-none" href=" {{ product.get_absolute_url }}"> Hello!!!!</a>
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
-                
-                  <small class="text-muted"> € {{product.price}}</small>
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" ><a href="{{ product.get_absolute_url }}" style="text-decoration: none; color: black;"> View</a></button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   </div>
+                  <small class="text-muted"> € {{product.price}}</small>
                 </div>
               </div>
             </div>
