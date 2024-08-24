@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-    <!-- Importing jQuery (if necessary for other parts of your site) -->
+    <!-- Importing jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
@@ -63,7 +63,7 @@
                     <div style="padding:10px">
                         <!-- Basket icon -->
                          <a type="button" role="button" href="{% url "basket:basket_summary" %}" class="btn btn-outline-secondary">
-                            <div class="d-inline-flex">1</div>
+                            <div id="basket_qty" class="d-inline-flex">0</div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                             class="bi bi-basket3" viewBox="0 0 16 16">
                             <path

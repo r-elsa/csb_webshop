@@ -34,7 +34,7 @@
                         <div class="row p-3">
                             <div class="col-6">
                                 <label for="select">Quantity</label>
-                                <select id="select_qty" class="form-select form-select-mg mb-1">
+                                <select id="select" class="form-select form-select-mg mb-1">
                                     <option selected value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -45,7 +45,9 @@
                                 </select>
 
                             </div>
-                            <div class="col-6 text-end"><button type ="button" id ="add-button" value = "{{product.id}}" class="btn btn-secondary btn-mg">Add to basket</button></div>
+                            <div class="col-6 text-end">
+                                <button type ="button" id ="add-button" value = "{{product.id}}" class="btn btn-secondary btn-mg">Add to basket</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,6 +56,35 @@
     </main>
 
 </div>
+
+<script>
+
+    $(document).on('click', '#add-button', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url:'{% url "basket:basket_add" %}',
+            data: {
+                product_id: $('#add-button').val(),
+                product_qty: $('#select option:selected').text(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action:'post'
+            },
+            success: function (json) {
+                console.log(json)
+                document.getElementById("basket_qty").innerHTML = json.qty
+
+            },
+            error: function (xhr, errmsg, err) {
+
+            }
+
+        });
+
+    })
+
+
+</script>
 
 
 {% endblock %}
