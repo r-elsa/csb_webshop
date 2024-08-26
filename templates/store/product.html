@@ -53,6 +53,31 @@
                 </div>
             </div>
         </div>
+
+          <!-- Reviews Section -->
+          <div class="mt-4" style="float: right; width: 40%;">
+            <h3>Reviews</h3>
+            <ul class="list-unstyled">
+                {% for review in reviews %}
+                <li class="border-bottom mb-2 pb-2">
+                    <strong>{{ review.user.username }}</strong> <small class="text-muted">{{ review.created_at }}</small>
+                    <p>{{ review.content }}</p>
+                </li>
+                {% empty %}
+                <p>No reviews yet.</p>
+                {% endfor %}
+            </ul>
+
+            <!-- Review Form -->
+            <h4>Leave a review</h4>
+            <form method="post" action="#">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <textarea class="form-control" name="content" rows="4" placeholder="Write your review here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </div>
     </main>
 
 </div>
