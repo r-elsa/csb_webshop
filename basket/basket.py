@@ -1,3 +1,6 @@
+from django.shortcuts import render, get_object_or_404
+
+from store.models import Product
 
 class Basket ():
     def __init__(self, request):
@@ -10,9 +13,30 @@ class Basket ():
 
     
     def add(self, product, product_qty):
+
         product_id= product.id
 
-        if product_id not in self.basket:
-            self.basket[product_id]= {'price': str(product.price), 'qty': int(product_qty)}
+        self.basket[str(product_id)] = {'price': str(product.price), 'qty': int(product_qty)}
+        
+        print("after", self.basket)
         
         self.session.modified = True
+
+    
+    def __len__(self):
+        return sum(item['qty'] for item in self.basket.values() )
+    
+    def get_items(self):
+        items = []
+        for product_id, data in self.basket.items():
+            product = get_object_or_404(Product, id=product_id)
+            items.append({'product': product, 'qty': data['qty'], 'price': data['price']})
+        return items
+    
+    def get_total_price(self):
+        return sum(float(item['price']) * int(item['qty']) for item in self.basket.values())
+
+    
+
+
+

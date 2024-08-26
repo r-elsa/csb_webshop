@@ -45,7 +45,6 @@
                                 Categories
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">All</a></li>
                                 {% for c in categories %}
                                 <li>
                                     <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
@@ -63,7 +62,23 @@
                     <div style="padding:10px">
                         <!-- Basket icon -->
                          <a type="button" role="button" href="{% url "basket:basket_summary" %}" class="btn btn-outline-secondary">
-                            <div id="basket_qty" class="d-inline-flex">0</div>
+                           
+    
+
+                           {% with total_qty=basket|length %}
+                           <div id="basket_qty" class="d-inline-flex">
+                            {% if total_qty > 0 %}
+                            {{total_qty}}
+                        
+                            {% else %}
+                            0
+                            {% endif %}
+                          </div>
+                            {% endwith %}
+                         
+                           
+                           
+                            
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                             class="bi bi-basket3" viewBox="0 0 16 16">
                             <path
