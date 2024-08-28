@@ -33,28 +33,30 @@
      
 
     <!-- Rendering results -->
-      {% for product in products %}
-
-      <div class="row mb-4 shadow ">
+    {% for product in products %}
+    <div class="col">
+      <div class="card shadow-sm">
+        <img class="img-fluid" alt="Image" src="{{ product.image.url}}" style="height: 200px; object-fit: cover;">
       
-        <div class="card" >
-          <div class="card-body">
-            <div class="row card-body">
-              <div class = "col-3">
-              <h5 class="card-title">{{ product.name}} </h5>
-            </div>
-            <div class= "col-8">
-              <a class="link-primary text-decoration-none" href='/product/{{product.slug}}'>{{ product.information }}</a>
-            </div>
-            <div class= "col-1">
-              <p class="card-text" style=>{{product.price}} €</p>
-            </div>
-            
+    
+        <div class="card-body">
+          <a class="text-dark text-decoration-none" href=" {{ product.get_absolute_url }}"> <h5 class="card-title">{{ product.title}} </h5>              
+          </a>
+         
+          <p class="card-text">{{ product.description }}
+          </p>
+          <div class="d-flex justify-content-between align-items-center">
+          
+            <small class="text-muted"> € {{product.price}}</small>
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary" ><a href="{{ product.get_absolute_url }}" style="text-decoration: none; color: black;"> View</a></button>
             </div>
           </div>
         </div>
       </div>
-      {% endfor %}
+    </div>
+    {% endfor %}
+ 
 
    
 </div>
