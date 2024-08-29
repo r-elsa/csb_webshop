@@ -1,7 +1,5 @@
 import json
 from django.shortcuts import render, get_object_or_404
-
-# Create your views here.
 from .models import Category, Product
 
 from django.http import HttpResponse
@@ -41,10 +39,10 @@ def search_products(request):
             product_ids = list(products.values('id'))
             searchresult = Searchresult(request)
             searchresult.add(res=json.dumps(product_ids))
-            return render(request, 'store/category.html', {'products': products})
+            return render(request, 'store/category.html', {'products': products, 'searchresult': f'The search term "{q}" found {len(products)} results.'})
         else:
-            return render(request, 'store/category.html', { 'products': {}})
+            return render(request, 'store/category.html', { 'products': {},  'searchresult': f'The search term "{q}" found {len(products)} results.'})
+
     else:
-        # If no query is provided, return the same template with an empty context or a message
-        return render(request, 'store/category.html', { 'products': {}})
+        return render(request, 'store/category.html', {  'searchresult': f'The search term " " found 0 results.'})
 

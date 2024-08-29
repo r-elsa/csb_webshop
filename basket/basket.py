@@ -13,16 +13,10 @@ class Basket ():
 
     
     def add(self, product, product_qty):
-
         product_id= product.id
-
         self.basket[str(product_id)] = {'price': str(product.price), 'qty': int(product_qty)}
-        
-        print("after", self.basket)
-        
         self.session.modified = True
 
-    
     def __len__(self):
         return sum(item['qty'] for item in self.basket.values() )
     

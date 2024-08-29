@@ -27,10 +27,10 @@
             <div class="row p-3">
               <div class="col-12">
                 <label for="select">Qty:</label>
-             
-                    {{item.qty}}
-   
-            
+
+                {{item.qty}}
+
+
               </div>
             </div>
           </div>
@@ -40,7 +40,9 @@
     {% endwith %}
     {% endfor %}
     <div class="col-12 text-end">
-      <div class="h6 fw-bold">Sub Total: €<div id="subtotal" class="d-inline-flex">{{basket.get_total_price}}</div></div>
+      <div class="h6 fw-bold">Sub Total: €<div id="subtotal" class="d-inline-flex">
+          {{ basket.get_total_price|floatformat:2 }}</div>
+      </div>
     </div>
   </div>
 </main>

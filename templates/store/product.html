@@ -1,5 +1,3 @@
-<!-- single product detail page -->
-
 {% extends "./base.html" %}
 {% load static %}
 {% block title %}
@@ -8,14 +6,11 @@
 {% block content %}
 <div class="container">
     <main class="pt-5">
-      
+
         <div class="row g-3">
-          
+
             <div class="col-md-5 col-lg-5 order-md-first ">
 
-               <!--  button back to mainpage -->
-            
-           <!--  details of product -->
             </div>
             <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
                 <h1 class="mb-0 h4">{{ product.title }}</h1>
@@ -24,12 +19,12 @@
                 <div class="border">
                     <div class="col border-bottom">
                         <div class="row p-3">
-                           
+
                             <div class="col-6 text-end"><span class="h4 fw-bold">{{ product.price }}€ </span></div>
                         </div>
                     </div>
 
-                   <!--  feature to add a chosen amount of products to basket -->
+
                     <div class="col">
                         <div class="row p-3">
                             <div class="col-6">
@@ -42,11 +37,15 @@
                                     <option value="5">5</option>
                                     <option value="6">6</option>
                                     <option value="7">7</option>
+                                    <option value="7">8</option>
+
+
                                 </select>
 
                             </div>
                             <div class="col-6 text-end">
-                                <button type ="button" id ="add-button" value = "{{product.id}}" class="btn btn-secondary btn-mg">Add to basket</button>
+                                <button type="button" id="add-button" value="{{product.id}}"
+                                    class="btn btn-secondary btn-mg">Add to basket</button>
                             </div>
                         </div>
                     </div>
@@ -54,46 +53,21 @@
             </div>
         </div>
 
-          <!-- Reviews Section -->
-          <div class="mt-4" style="float: right; width: 40%;">
-            <h3>Reviews</h3>
-            <ul class="list-unstyled">
-                {% for review in reviews %}
-                <li class="border-bottom mb-2 pb-2">
-                    <strong>{{ review.user.username }}</strong> <small class="text-muted">{{ review.created_at }}</small>
-                    <p>{{ review.content }}</p>
-                </li>
-                {% empty %}
-                <p>No reviews yet.</p>
-                {% endfor %}
-            </ul>
-
-            <!-- Review Form -->
-            <h4>Leave a review</h4>
-            <form method="post" action="#">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <textarea class="form-control" name="content" rows="4" placeholder="Write your review here..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit Review</button>
-            </form>
-        </div>
     </main>
 
 </div>
 
 <script>
-
     $(document).on('click', '#add-button', function (e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url:'{% url "basket:basket_add" %}',
+            url: '{% url "basket:basket_add" %}',
             data: {
                 product_id: $('#add-button').val(),
                 product_qty: $('#select option:selected').text(),
                 csrfmiddlewaretoken: "{{csrf_token}}",
-                action:'post'
+                action: 'post'
             },
             success: function (json) {
                 console.log(json)
@@ -107,8 +81,6 @@
         });
 
     })
-
-
 </script>
 
 
