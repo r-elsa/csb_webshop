@@ -3,42 +3,8 @@
 {% block title %}{% endblock %}
 {% block content %}
 
-
 <main>
   <main>
-    <section class="py-5 text-center container">
-      <div class="row py-lg-1">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">Webshop 2.0</h1>
-          <p class="lead text-muted">Search & find, view & review & add the prducts to your basket </p>
-          <p>
-            <a href="#" class="btn btn-secondary my-2">Login</a>
-            <a href="#" class="btn btn-primary my-2">Register</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-5 text-center container">
-      <div class="row py-lg-1">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <p class="lead text-muted">Search by product name</p>
-          <p>
-
-            <form class="d-flex w-100 d-md-none">
-              <input class="form-control me-2" type="search" placeholder="Search products or FAQ" aria-label="Search">
-              <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </form>
-            <form action="/search" method="get" class="d-flex">
-              <input type="text" name="q" class="form-control me-2" placeholder="" aria-label="Search">
-              <input type="submit" value="Search" class="btn btn-outline-secondary">
-            </form>
-          </p>
-        </div>
-      </div>
-    </section>
-
-
     <div class="album py-5 bg-light">
       <div class="container">
         {% if products %}
