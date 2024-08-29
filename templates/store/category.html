@@ -20,26 +20,19 @@
   </section>
 
   <main>
-
     <div class="album py-5 bg-light">
       <div class="container">
         {% if category %}
 
         <div class="pb-3 h5">{{ category.name|title }}</div>
-
         {% else %}
         <div class="pb-3 h5">{{ searchresult }}</div>
-
         {% endif %}
-
-
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           {% for product in products %}
           <div class="col">
             <div class="card shadow-sm">
               <img class="img-fluid" alt="Image" src="{{ product.image.url}}" style="height: 200px; object-fit: cover;">
-
-
               <div class="card-body">
                 <a class="text-dark text-decoration-none" href=" {{ product.get_absolute_url }}">
                   <h5 class="card-title">{{ product.title}} </h5>
@@ -60,16 +53,10 @@
             </div>
           </div>
           {% endfor %}
-
-
-
         </div>
       </div>
     </div>
-
   </main>
-
-
   </div>
   </div>
   </div>

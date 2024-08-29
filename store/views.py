@@ -3,7 +3,6 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 
 from django.http import HttpResponse
-from django.core.exceptions import ObjectDoesNotExist
 from .searchresult import Searchresult
 
 def all_products(request):
@@ -19,19 +18,16 @@ def category_list(request, category_slug):
     products = Product.objects.filter(category=category)
     return render(request, 'store/category.html', {'category': category, 'products': products})
 
-
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
 def categories(request):
     return {
         'categories': Category.objects.all()
-
     }
 
 def search_products(request):  
     q = request.GET.get('q', None)
-    
     if q:   
         products = Product.objects.filter(name__icontains=q)
         
