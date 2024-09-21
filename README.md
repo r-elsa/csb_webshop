@@ -1,7 +1,7 @@
 # Webshop -application with vulnerabilities
 
 
-An webshop -application with 5 vulnerabilities out of [Owasp top 10](https://owasp.org/Top10/). The application is developed for course [Cyber Security Base](https://cybersecuritybase.mooc.fi/module-3.1).
+A webshop -website developed using Python & Django. The application has 5 vulnerabilities out of [Owasp top 10](https://owasp.org/Top10/). Using list from 2021. The application is developed for course [Cyber Security Base](https://cybersecuritybase.mooc.fi/module-3.1).
 
 Note! The project is on branch *master*
 
@@ -102,7 +102,6 @@ from django.contrib.sessions.models import Session
 s=Session.objects.get(pk='<insert key here>')
 s.get_decoded()
 
-```
 
 
 
