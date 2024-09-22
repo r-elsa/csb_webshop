@@ -52,6 +52,20 @@ poetry run python manage.py runserver
 1. Username
 
 ```bash
+admin_csb
+```
+2. Password
+```bash
+admin321
+```
+
+## Admin credentials
+
+<br />
+
+1. Username
+
+```bash
 csb_user
 ```
 2. Password
@@ -61,19 +75,7 @@ csb2024
 
 <br />
 
-## Superuser credentials
 
-<br />
-
-1. Username
-
-```bash
-admin_csb
-```
-2. Password
-```bash
-admin321
-```
 
 ## Database migrations
 
