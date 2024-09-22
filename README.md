@@ -39,7 +39,7 @@ poetry shell
 3. Start server / run application
 
 ```bash
-poetry run python csb/manage.py runserver  
+poetry run python manage.py runserver  
 
 ```
 
