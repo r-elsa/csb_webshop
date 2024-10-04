@@ -19,7 +19,7 @@ Note! The project is on branch *master*
 ## Installation, compilation and excecution
 <br />
 
-1. Navigate to /csb_webshop and add dependencies
+**1. Navigate to /csb_webshop and add dependencies**
 
 ```bash
 poetry install
@@ -28,7 +28,7 @@ poetry install
 
 <br />
 
-2. Activate shell
+**2. Activate shell**
 
 ```bash
 poetry shell
@@ -36,7 +36,25 @@ poetry shell
 
 <br />
 
-3. Start server / run application
+**3. Create superuser (admin). You can leave email field empty.**
+
+```bash
+ py manage.py createsuperuser
+```
+<br />
+
+**4. Make migrations**
+   
+```bash
+py manage.py makemigrations
+```
+
+```bash
+py manage.py migrate
+```
+
+
+**5. Start server / run application**
 
 ```bash
 poetry run python manage.py runserver  
@@ -47,17 +65,8 @@ poetry run python manage.py runserver
 
 ## Admin credentials
 
-<br />
-
-1. Username
-
-```bash
-admin_csb
-```
-2. Password
-```bash
-admin321
-```
+superuser
+super321
 
 ## Admin credentials
 
@@ -74,22 +83,6 @@ csb2024
 ```
 
 <br />
-
-
-
-## Database migrations
-
-<br />
-
-
-```bash
-py manage.py makemigrations
-```
-
-```bash
-py manage.py migrate
-```
-
 
 ## Shell
 
