@@ -29,12 +29,16 @@
                             <a class="nav-link" href="/admin">Admin</a>
                         </li>
 
+                        {% if categories %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="/search/all/">All</a>
+                                </li>
                                 {% for c in categories %}
                                 <li>
                                     <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
@@ -42,7 +46,8 @@
                                 {% endfor %}
                             </ul>
                         </li>
-
+                        {% endif %}
+                        
                     </ul>
                 </div>
 
@@ -93,7 +98,7 @@
           <section class="py-5 text-center container">
             <div class="row py-lg-1">
               <div class="col-lg-6 col-md-8 mx-auto">
-                <p class="lead text-muted">Search by product name</p>
+                <p class="lead text-muted">Search by product title</p>
                 <p>
                   <form action="/search" method="get" class="d-flex">
                     <input type="text" name="q" class="form-control me-2" placeholder="" aria-label="Search">

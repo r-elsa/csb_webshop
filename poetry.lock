@@ -35,6 +35,16 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "escape"
+version = "1.1"
+description = "Simple Terminal Styling for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "escape-1.1-py2.py3-none-any.whl", hash = "sha256:56a1ab392c252fc2a1d5afc81e82720e83116f8873e9ae62a17f4223b4b7064c"},
+]
+
+[[package]]
 name = "pillow"
 version = "10.4.0"
 description = "Python Imaging Library (Fork)"
@@ -160,4 +170,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "950532680848b93c24d96ed026e2f25517328ae48aff8fbe693967538b9fd6b7"
+content-hash = "65cd374ad40c4cb9ce25398aa6e1fbf1940ff7a9ae5a40dd16a6194a917c1bf3"
