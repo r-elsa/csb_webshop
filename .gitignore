@@ -3,5 +3,5 @@ store/__pycache__/*db.sqlite3
 __pycache__/
 db.sqlite3
 media/images/ohtu-1_1.png
-store/__pycache__/models.cpython-311.pyc
 media/images/*
+store/__pycache__/*
