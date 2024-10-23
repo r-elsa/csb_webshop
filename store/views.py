@@ -71,5 +71,28 @@ def search_products(request):
         })
 
 
+""" def search_products(request):  
+    q = request.GET.get('q', None)
+
+    if q:
+        products = Product.objects.filter(title__icontains=q)
+
+        if products.exists():
+            searchresult = Searchresult(request)
+            searchresult.add(res=json.dumps(list(products.values('id'))))
+            return render(request, 'store/category.html', {
+                'products': products,
+                'searchresult': f'The search term "{q}" found {len(products)} results.'
+            })
+        else:
+            return render(request, 'store/category.html', {
+                'products': {},
+                'searchresult': f'The search term "{q}" found 0 results.'
+            })
+    else:
+        return render(request, 'store/category.html', {
+            'searchresult': 'No search term provided.'
+        }) """
+
    
 
