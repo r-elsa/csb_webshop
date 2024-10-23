@@ -17,9 +17,13 @@
           {% for product in products %}
           <div class="col">
             <div class="card shadow-sm">
-              <img class="img-fluid" alt="Image" src="{{ product.image.url}}" style="height: 200px; object-fit: cover;">
+              <img class="img-fluid" alt="Image" 
+              src="/media/{{product.image}}" 
+              style="height: 200px; object-fit: cover;">
+         
+
               <div class="card-body">
-                <a class="text-dark text-decoration-none" href=" {{ product.get_absolute_url }}">
+                <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">
                   <h5 class="card-title">{{ product.title}} </h5>
                 </a>
 

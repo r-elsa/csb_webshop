@@ -1,7 +1,8 @@
 import json
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
-""" from django.utils.html import escape   """
+from django.db import connection
+from django.urls import reverse
 
 from django.http import HttpResponse
 from .searchresult import Searchresult
@@ -30,36 +31,45 @@ def categories(request):
 def search_products(request):  
     q = request.GET.get('q', None)
 
-    """ # Retrieve the search query from the request and sanitize it.
-    q = request.GET.get('q', '').strip()
-    
-    # Additional validation for input if necessary
-    # e.g., restricting the length or pattern of the query
-    if len(q) > 100:  # Limit the length of the search query
-        return render(request, 'store/category.html', {
-            'products': {},
-            'searchresult': 'Search term too long. Please use a shorter term.'
-        }) """
-    
     if q:
+        query = f"SELECT id, title, price, description, author, in_stock, is_active, image, slug FROM store_product WHERE title LIKE '%{q}%'"
 
-        """ # Using parameterized query
-        products = Product.objects.filter(title__icontains=q) """
-        products = Product.objects.filter(title=q)
+        with connection.cursor() as cursor:
+            cursor.execute(query)  
+            rows = cursor.fetchall() 
+  
+        if rows: 
+            products = [
+                {
+                    'id': row[0],
+                    'title': row[1],
+                    'price': row[2],
+                    'description': row[3],
+                    'author': row[4],
+                    'in_stock': row[5],
+                    'is_active': row[6],
+                    'image': row[7], 
+                    'get_absolute_url': reverse('store:product_detail', args=[row[8]]) 
+                } for row in rows
+            ]
 
-       
-        
-        
-        if products.exists():
-            product_ids = list(products.values('id'))
             searchresult = Searchresult(request)
-            searchresult.add(res=json.dumps(product_ids))
-            """ # Use escape to safely render the query in the template context
-            escaped_q = escape(q) """
-            return render(request, 'store/category.html', {'products': products, 'searchresult': f'The search term "{q}" found {len(products)} results.'})
-        else:
-            return render(request, 'store/category.html', { 'products': {},  'searchresult': f'The search term "{q}" found {len(products)} results.'})
+            searchresult.add(res=json.dumps([p['id'] for p in products]))
 
+            return render(request, 'store/category.html', {
+                'products': products,
+                'searchresult': f'The search term \"{q}\" found {len(products)} results.'
+            })
+        else:
+            return render(request, 'store/category.html', {
+                'products': [],
+                'searchresult': f'The search term \"{q}\" found 0 results.'
+            })
     else:
-        return render(request, 'store/category.html', {  'searchresult': f'The search term " " found 0 results.'})
+        return render(request, 'store/category.html', {
+            'searchresult': 'No search term provided.'
+        })
+
+
+   
 
