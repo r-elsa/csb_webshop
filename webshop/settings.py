@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'basket',
+    'account'
 ]
 
 
@@ -111,6 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Custom User Model
+AUTH_USER_MODEL = 'account.CustomUser' 
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

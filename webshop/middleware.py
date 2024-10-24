@@ -7,7 +7,6 @@ class AutoLoginSuperUserMiddleware(MiddlewareMixin):
             User = get_user_model()
             try:
                 superuser = User.objects.get(is_superuser=True)
-                if superuser:
-                    request.user = superuser
+                request.user = superuser 
             except User.DoesNotExist:
-                pass  
+                pass
