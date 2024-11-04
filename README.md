@@ -68,7 +68,7 @@ py manage.py makemigrations
 py manage.py migrate
 ```
 
-**4. Create superuser (admin).**
+**4. Create admin user. IMPORTANT!**
 
 ```bash
  py manage.py createsuperuser
@@ -83,7 +83,15 @@ py manage.py migrate
 poetry run python manage.py runserver  
 
 ```
+<br />
 
+**5. What to do next?**
+
+- Click on **Admin** or navigate to /admin.
+- Create a few categories of products (e.g. **laptops** and **headphones**)
+- Create a few products to each categories (e.g. **Laptops**: Mac Book, ThinkPad, Asus. **Headphones**: AirPods, Beats Studio Pro). Fill in all necessary fields.
+- Navigate back to *http://127.0.0.1:8000/*
+- Explore the webshop: Filter products by category, search for product by product title, view product and add a selected amount to your shopping basket. View basket by clicking on the basket. Go to admin and add a few more categories and/or products. Try inserting a script to Product search -field or make a GET -requst to *http://127.0.0.1:8000/basket/add* from postman...
 <br />
 
 
