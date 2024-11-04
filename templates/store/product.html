@@ -55,19 +55,20 @@
 </div>
 
 <script>
-    $(document).on('click', '#add-button', function (e) {
+     $(document).on('click', '#add-button', function (e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
             url: '{% url "basket:basket_add" %}',
             data: {
                 product_id: $('#add-button').val(),
-                product_qty: $('#select option:selected').text(),
+                product_qty: $('#select option:selected').text(), 
+                session_id: '1', // new
+
                // csrfmiddlewaretoken: "{{ csrf_token }}",
                 action: 'post'
             },
             success: function (json) {
-                console.log(json)
                 document.getElementById("basket_qty").innerHTML = json.qty
             },
             error: function (xhr, errmsg, err) {
@@ -76,6 +77,9 @@
         });
 
     })
+ 
+
+ 
 </script>
 
 {% endblock %}
