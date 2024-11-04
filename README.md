@@ -38,7 +38,7 @@ Note! The project is on branch *master*
 
 
 
-## Installation, compilation and excecution
+## Installation, compilation and execution
 <br />
 
 **1. Navigate to /csb_webshop and add dependencies**
