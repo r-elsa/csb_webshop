@@ -9,5 +9,4 @@ urlpatterns = [
     path('search/', views.search_products, name='search_products'), 
     path('search/all/', views.all_products, name='all_products'),
     path('search/<slug:category_slug>/', views.category_list, name='category_list')
-    
 ]

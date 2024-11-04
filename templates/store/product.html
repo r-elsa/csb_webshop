@@ -7,15 +7,13 @@
 <div class="container">
     <main class="pt-5">
         <div class="row g-3">
-       
+
             <div class="col-md-5 col-lg-5 order-md-first d-flex justify-content-end">
-                <img class="img-fluid" 
-                    alt="Image" 
-                    src="/media/{{ product.image }}" 
+                <img class="img-fluid" alt="Image" src="/media/{{ product.image }}"
                     style="height: 300px; object-fit: cover; margin-bottom: 20px;">
 
             </div>
-            
+
             <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
                 <h1 class="mb-0 h4">{{ product.title }}</h1>
                 <p><span class="lead">{{ product.author }}</span></p>
@@ -43,11 +41,12 @@
                                 </select>
                             </div>
                             <div class="col-6 text-end">
-                                <button type="button" id="add-button" value="{{ product.id }}" class="btn btn-secondary btn-mg">Add to basket</button>
+                                <button type="button" id="add-button" value="{{ product.id }}"
+                                    class="btn btn-secondary btn-mg">Add to basket</button>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -55,31 +54,27 @@
 </div>
 
 <script>
-     $(document).on('click', '#add-button', function (e) {
+    $(document).on('click', '#add-button', function (e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',
             url: '{% url "basket:basket_add" %}',
             data: {
                 product_id: $('#add-button').val(),
-                product_qty: $('#select option:selected').text(), 
+                product_qty: $('#select option:selected').text(),
                 session_id: '1', // new
 
-               // csrfmiddlewaretoken: "{{ csrf_token }}",
+                // csrfmiddlewaretoken: "{{ csrf_token }}",
                 action: 'post'
             },
             success: function (json) {
                 document.getElementById("basket_qty").innerHTML = json.qty
             },
-            error: function (xhr, errmsg, err) {
-            }
+            error: function (xhr, errmsg, err) {}
 
         });
 
     })
- 
-
- 
 </script>
 
 {% endblock %}

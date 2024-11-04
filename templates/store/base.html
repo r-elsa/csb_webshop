@@ -17,7 +17,7 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">Webshop</a>
+                <a class="navbar-brand" href="/">Webshop 2.0</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -47,13 +47,9 @@
                             </ul>
                         </li>
                         {% endif %}
-                        
+
                     </ul>
                 </div>
-
-                <a href="#" class="btn btn-secondary my-2" style="padding: 10px 20px; margin-right: 10px;">Login</a>
-                <a href="#" class="btn btn-primary my-2" style="padding: 10px 20px;">Register</a>
-                
 
                 <div style="display: flex; padding:10px">
                     <div style="padding:10px">
@@ -88,29 +84,20 @@
 
         <section class="py-5 text-center container">
             <div class="row py-lg-1">
-              <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Webshop 2.0</h1>
-                <p class="lead text-muted">Search & find, view & review & add the prducts to your basket </p>
-    
-              </div>
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <p class="lead text-muted">Search by product title</p>
+                    <p>
+                        <form action="/search" method="get" class="d-flex">
+                            <input type="text" name="q" class="form-control me-2" placeholder="" aria-label="Search">
+                            <input type="submit" value="Search" class="btn btn-outline-secondary">
+                        </form>
+                    </p>
+                </div>
             </div>
-          </section>
-      
-          <section class="py-5 text-center container">
-            <div class="row py-lg-1">
-              <div class="col-lg-6 col-md-8 mx-auto">
-                <p class="lead text-muted">Search by product title</p>
-                <p>
-                  <form action="/search" method="get" class="d-flex">
-                    <input type="text" name="q" class="form-control me-2" placeholder="" aria-label="Search">
-                    <input type="submit" value="Search" class="btn btn-outline-secondary">
-                  </form>
-                </p>
-              </div>
-            </div>
-          </section>
-    
-        {% block content %} {% endblock %}</div>
+        </section>
+
+        {% block content %} {% endblock %}
+    </div>
 
 </body>
 
