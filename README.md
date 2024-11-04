@@ -1,18 +1,40 @@
 # Webshop -application with vulnerabilities
 
-
-A webshop -website developed using Python & Django. The application has 5 vulnerabilities out of [Owasp top 10](https://owasp.org/Top10/). Using list from 2021. The application is developed for course [Cyber Security Base](https://cybersecuritybase.mooc.fi/module-3.1).
+A webshop -website developed using Python & Django. The application has 5 vulnerabilities out of the [Owasp top 10](https://owasp.org/Top10/) from 2021. The application is developed for the course [Cyber Security Base](https://cybersecuritybase.mooc.fi/module-3.1).
 
 Note! The project is on branch *master*
 
 <br />
 
-## Product features and respective vulnerabilities
+## Vulnerabilities in Product Features
 
-- registration & login
-- shopping cart session
-- product search - form submission without CSRF
+### FLAW 1: Broken Access Control
+**Feature:** Admin board  
+**OWASP Category:** A01: Broken Access Control  
 
+
+
+### FLAW 2: SQL Injection
+**Feature:** Product search  
+**OWASP Category:** A03: Injection  
+
+
+
+### FLAW 3: Cross-Site Request Forgery (CSRF)
+**Feature:** Create superuser  
+**OWASP Category:** A08: Software and Data Integrity Failures  
+
+
+
+### FLAW 4: Sensitive Data Exposure
+**Feature:** Shopping basket  
+**OWASP Category:** A02: Cryptographic Failures  
+
+
+
+### FLAW 5: Insecure Direct Object References (IDOR)
+**Feature:** Shopping basket  
+**OWASP Category:** A04: Insecure Design  
 
 
 
@@ -36,7 +58,7 @@ poetry shell
 
 <br />
 
-**3. Create superuser (admin). You can leave email field empty.**
+**3. Create superuser (admin).**
 
 ```bash
  py manage.py createsuperuser
@@ -53,7 +75,6 @@ py manage.py makemigrations
 py manage.py migrate
 ```
 
-
 **5. Start server / run application**
 
 ```bash
@@ -63,26 +84,6 @@ poetry run python manage.py runserver
 
 <br />
 
-## Admin credentials
-
-superuser
-super321
-
-## Admin credentials
-
-<br />
-
-1. Username
-
-```bash
-csb_user
-```
-2. Password
-```bash
-csb2024
-```
-
-<br />
 
 ## Shell
 
