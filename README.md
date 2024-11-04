@@ -58,14 +58,7 @@ poetry shell
 
 <br />
 
-**3. Create superuser (admin).**
-
-```bash
- py manage.py createsuperuser
-```
-<br />
-
-**4. Make migrations**
+**3. Make migrations. IMPORTANT!**
    
 ```bash
 py manage.py makemigrations
@@ -74,6 +67,15 @@ py manage.py makemigrations
 ```bash
 py manage.py migrate
 ```
+
+**4. Create superuser (admin).**
+
+```bash
+ py manage.py createsuperuser
+```
+<br />
+
+
 
 **5. Start server / run application**
 
