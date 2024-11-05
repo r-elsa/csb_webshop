@@ -12,22 +12,12 @@ def basket_summary(request):
 
 def basket_add(request):
     basket = Basket(request)
-    if request.POST.get('action') == 'post':
-        session_id = request.POST.get('session_id', '1') # new
+    if request.method == 'POST':
+        session_id = request.POST.get('session_id', '1')  
         product_id = int(request.POST.get('product_id', 0))
         product_qty = int(request.POST.get('product_qty', 1))
         product = get_object_or_404(Product, id=product_id)
         basket.add(product=product, product_qty=product_qty)
-        basket_qty = len(basket)  
-        response = JsonResponse({'qty': basket_qty, 'session_id': session_id}) #  new,  Include the session ID in the response for visibility
-        
-
-        duplicates = CustomUser.objects.values('email').annotate(email_count=Count('email')).filter(email_count__gt=1)
-        for dup in duplicates:
-            print(dup)
-        
-        for email in duplicates.values_list('email', flat=True):
-            users = CustomUser.objects.filter(email=email)
-            users_to_delete = users[1:]  # Keep the first one
-            users_to_delete.delete()
+        basket_qty = len(basket)
+        response = JsonResponse({'qty': basket_qty, 'session_id': session_id})
         return response

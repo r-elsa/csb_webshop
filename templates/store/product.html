@@ -53,6 +53,7 @@
     </main>
 </div>
 
+
 <script>
     $(document).on('click', '#add-button', function (e) {
         e.preventDefault();
@@ -62,19 +63,18 @@
             data: {
                 product_id: $('#add-button').val(),
                 product_qty: $('#select option:selected').text(),
-                session_id: '1', // new
-
-                // csrfmiddlewaretoken: "{{ csrf_token }}",
+                session_id: '1', 
                 action: 'post'
             },
             success: function (json) {
-                document.getElementById("basket_qty").innerHTML = json.qty
+                document.getElementById("basket_qty").innerHTML = json.qty;
             },
-            error: function (xhr, errmsg, err) {}
-
+            error: function (xhr, errmsg, err) {
+                console.error(err);  
+            }
         });
-
-    })
+    });
 </script>
+
 
 {% endblock %}
