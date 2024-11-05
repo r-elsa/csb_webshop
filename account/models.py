@@ -16,7 +16,8 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
 
         user = self.model(email=email, **extra_fields)
-        user.password = password  
+        user.password = password 
+        # user.set_password(password)
         user.save(using=self._db)  
 
         return user 
