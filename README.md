@@ -1,22 +1,44 @@
 # Webshop -application with vulnerabilities
 
-
-A webshop -website developed using Python & Django. The application has 5 vulnerabilities out of [Owasp top 10](https://owasp.org/Top10/). Using list from 2021. The application is developed for course [Cyber Security Base](https://cybersecuritybase.mooc.fi/module-3.1).
+A webshop -website developed using Python & Django. The application has 5 vulnerabilities out of the [Owasp top 10](https://owasp.org/Top10/) from 2021. The application is developed for the course [Cyber Security Base](https://cybersecuritybase.mooc.fi/module-3.1).
 
 Note! The project is on branch *master*
 
 <br />
 
-## Product features and respective vulnerabilities
+## Vulnerabilities in Product Features
 
-- registration & login
-- shopping cart session
-- product search - form submission without CSRF
-
-
+### FLAW 1: Broken Access Control
+**Feature:** Admin board  
+**OWASP Category:** A01: Broken Access Control  
 
 
-## Installation, compilation and excecution
+
+### FLAW 2: SQL Injection
+**Feature:** Product search  
+**OWASP Category:** A03: Injection  
+
+
+
+### FLAW 3: Cross-Site Request Forgery (CSRF)
+**Feature:** Create superuser  
+**OWASP Category:** A08: Software and Data Integrity Failures  
+
+
+
+### FLAW 4: Sensitive Data Exposure
+**Feature:** Shopping basket  
+**OWASP Category:** A02: Cryptographic Failures  
+
+
+
+### FLAW 5: Insecure Direct Object References (IDOR)
+**Feature:** Shopping basket  
+**OWASP Category:** A04: Insecure Design  
+
+
+
+## Installation, compilation and execution
 <br />
 
 **1. Navigate to /csb_webshop and add dependencies**
@@ -36,14 +58,7 @@ poetry shell
 
 <br />
 
-**3. Create superuser (admin). You can leave email field empty.**
-
-```bash
- py manage.py createsuperuser
-```
-<br />
-
-**4. Make migrations**
+**3. Make migrations. IMPORTANT!**
    
 ```bash
 py manage.py makemigrations
@@ -53,6 +68,14 @@ py manage.py makemigrations
 py manage.py migrate
 ```
 
+**4. Create admin user. IMPORTANT!**
+
+```bash
+ py manage.py createsuperuser
+```
+<br />
+
+
 
 **5. Start server / run application**
 
@@ -60,29 +83,17 @@ py manage.py migrate
 poetry run python manage.py runserver  
 
 ```
-
 <br />
 
-## Admin credentials
+**5. What to do next?**
 
-superuser
-super321
-
-## Admin credentials
-
+- Click on **Admin** or navigate to /admin.
+- Create a few categories of products (e.g. **laptops** and **headphones**)
+- Create a few products to each categories (e.g. **Laptops**: Mac Book, ThinkPad, Asus. **Headphones**: AirPods, Beats Studio Pro). Fill in all necessary fields.
+- Navigate back to *http://127.0.0.1:8000/*
+- Explore the webshop: Filter products by category, search for product by product title, view product and add a selected amount to your shopping basket. View basket by clicking on the basket. Go to admin and add a few more categories and/or products. Try inserting a script to Product search -field or make a GET -requst to *http://127.0.0.1:8000/basket/add* from postman...
 <br />
 
-1. Username
-
-```bash
-csb_user
-```
-2. Password
-```bash
-csb2024
-```
-
-<br />
 
 ## Shell
 
