@@ -13,11 +13,12 @@ def basket_summary(request):
 def basket_add(request):
     basket = Basket(request)
     if request.method == 'POST':
-        session_id = request.POST.get('session_id', '1')  
+        session_id = request.POST.get('session_id', '1')  # remove 
         product_id = int(request.POST.get('product_id', 0))
         product_qty = int(request.POST.get('product_qty', 1))
         product = get_object_or_404(Product, id=product_id)
         basket.add(product=product, product_qty=product_qty)
         basket_qty = len(basket)
         response = JsonResponse({'qty': basket_qty, 'session_id': session_id})
+        ## response = JsonResponse({'qty': basket_qty})  add
         return response

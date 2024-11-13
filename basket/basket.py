@@ -15,6 +15,23 @@ class Basket:
         product_id = product.id
         self.basket[str(product_id)] = {'price': str(product.price), 'qty': int(product_qty)}
         self.session.modified = True
+        
+    """  
+    class Basket:
+        def __init__(self, request):
+            self.session = request.session
+            if 'basket' not in self.session:
+                self.session['basket'] = {} 
+            self.basket = self.session['basket']
+
+        def add(self, product, product_qty):
+            product_id = product.id
+            self.basket[str(product_id)] = {
+                'price': str(product.price), 
+                'qty': int(product_qty)
+            }
+            self.session.modified = True """
+
 
 
     def __len__(self):
